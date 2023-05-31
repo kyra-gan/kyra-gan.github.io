@@ -150,7 +150,7 @@ html[xmlns] .flexslider .slides {
   content: '\f002';
 }
 .flex-direction-nav .flex-prev {
-  left: -100px;
+  left: -50px;
 }
 .flex-direction-nav .flex-next {
   right: -50px;
