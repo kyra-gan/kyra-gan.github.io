@@ -25,6 +25,7 @@ body {
 }
 
 
+
 /* Basic */
 
 body {
@@ -75,15 +76,18 @@ img {
     overflow: hidden;
 }
 
+
+
 ul {
+/*    padding-inline-start: 0;*/
     padding: 0;
     margin: 0;
-    list-style: none;
+    list-style: disc;
 }
 
-ul li {
+/*ul li {
     display: inline-block;
-}
+}*/
 
 html {
     -webkit-box-sizing: border-box;
@@ -874,3 +878,10 @@ section.contact-me {
         margin-bottom: 20px;
     }
 }
+
+.hover-tooltip {
+        border-bottom: 1px dotted #000;
+        border-color: #007bff; 
+        cursor: wait; /* Changes the cursor to a question mark*/
+    }
+
