@@ -8,6 +8,19 @@ https://templatemo.com/tm-531-reflux
 
 @import url(fontawesome.css);
 @import url("https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900");
+@import url("https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap");
+
+/* Design tokens (1–6) — revert by restoring prior hex / removing rules below */
+:root {
+    --brand-sidebar: #1a0f12;   /* sidebar / brand dark — keep */
+    --ink-content: #2a2426;     /* #4 warmed body ink (was #1a0f12) */
+    --ink-title: #1a0f12;       /* paper titles stay darkest */
+    --accent: #007bff;          /* #5 unified accent */
+    --accent-hover: #0056b3;
+    --award-accent: #8f5a4a;    /* terracotta — distinct from link blue */
+    --display-font: "Source Serif 4", Georgia, "Times New Roman", serif; /* #2 */
+}
+
 body {
     font-family: 'Lato', sans-serif;
 }
@@ -46,13 +59,13 @@ a:hover {
 p {
     font-size: 16px;
     line-height: 24px;
-    color: #1a0f12;
+    color: var(--ink-content);
 }
 
 h4 {
     font-size: 26px;
     font-weight: 700;
-    color: #1a0f12;
+    color: var(--ink-content);
     letter-spacing: 0.25px;
 }
 
@@ -143,6 +156,15 @@ html {
     width: 100%;
     transition: all 0.5s;
     border-top: 0px solid #fff;
+    letter-spacing: -0.02em; /* #3 tighter nav tracking */
+}
+
+.main-nav li a.nav-multiline {
+    height: auto;
+    min-height: 70px;
+    line-height: 1.25;
+    padding: 16px 10px;
+    box-sizing: border-box;
 }
 
 .main-nav li:hover a,
@@ -247,7 +269,7 @@ html {
     left: 0;
   -webkit-transition: -webkit-transform 233ms cubic-bezier(0, 0, 0.21, 1);
   -webkit-overflow-scrolling: touch;
-  background-color:#1a0f12;
+  background-color: var(--brand-sidebar);
 /*  background-color: #4f4949;*/
   /*background-color: #a43f49;*/
   box-sizing: border-box;
@@ -314,7 +336,7 @@ html {
 /* Section */
 
 .section {
-    color:#1a0f12;
+    color: var(--ink-content);
 /*    color: #4f4949;*/
     /*color: #fff;*/
     width: 55%;
@@ -323,7 +345,9 @@ html {
     position: relative;
     min-height: 10vh;
     padding-bottom: 80px;
-    border-bottom: 3px solid rgba(79,73,73, 0.25);
+    /* #7 Hairline section break — same weight/opacity on home + research */
+    border-bottom: 1px solid rgba(42, 36, 38, 0.14);
+    /*border-bottom: 3px solid rgba(79,73,73, 0.25);*/
     /*border-bottom: 3px solid rgba(250, 250, 250, 0.25);*/
 }
 
@@ -334,25 +358,27 @@ html {
 
 .section-heading h2 {
     text-align: center;
+    font-family: var(--display-font); /* #2 display face for section titles */
     font-size: 32px;
     font-weight: 700;
-    color:#1a0f12;
+    color: var(--ink-content);
 /*    color: #4f4949;*/
     /*color: #fff;*/
 }
 
 .section-heading h1 {
     text-align: center;
+    font-family: var(--display-font); /* #2 Funding / section h1 */
     font-size: 20px;
     font-weight: 700;
-    color: #1a0f12;
+    color: var(--ink-content);
     /*color: #fff;*/
 }
 
 .section-heading .line-dec {
     width: 60px;
     height: 3px;
-    color:#1a0f12;
+    color: var(--ink-content);
 /*    background-color: #4f4949;*/
     /*background-color: #a43f49;*/
     margin: 10px auto;
@@ -363,7 +389,7 @@ html {
     font-size: 16px;
     /*color: #fff;*/
 /*    color: #4f4949;*/
-    color:#1a0f12;
+    color: var(--ink-content);
     letter-spacing: 0.5px;
 }
 
@@ -881,7 +907,444 @@ section.contact-me {
 
 .hover-tooltip {
         border-bottom: 1px dotted #000;
-        border-color: #007bff; 
+        border-color: var(--accent); 
         cursor: wait; /* Changes the cursor to a question mark*/
     }
+
+/* Subpage sidebar (e.g. research.html) — scoped so index nav is unchanged */
+.menu.subpage .main-nav {
+    text-align: left;
+}
+
+.menu.subpage .main-nav li.back-home a {
+    height: auto;
+    line-height: 1.4;
+    padding: 14px 16px 10px 28px;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    color: rgba(255, 255, 255, 0.55);
+}
+
+.menu.subpage .main-nav li.back-home:hover a,
+.menu.subpage .main-nav li.back-home.active a {
+    background: transparent;
+    color: #fff;
+}
+
+.menu.subpage .main-nav li.nav-divider {
+    height: 0;
+    margin: 6px 28px 14px;
+    border: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.18);
+    pointer-events: none;
+}
+
+.menu.subpage .main-nav li.subpage-label {
+    pointer-events: none;
+}
+
+.menu.subpage .main-nav li.subpage-label span {
+    display: block;
+    padding: 0 16px 8px 28px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.38);
+}
+
+.menu.subpage .main-nav li.area-link a {
+    height: auto;
+    min-height: 52px;
+    line-height: 1.3;
+    padding: 14px 16px 14px 28px;
+    font-size: 15px;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.menu.subpage .main-nav li.area-link:hover a {
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+}
+
+/* Active marker sits just before the title, aligned like a bullet */
+.menu.subpage .main-nav li.area-link.active a {
+    background: transparent;
+    color: #fff;
+    box-shadow: none;
+}
+
+.menu.subpage .main-nav li.area-link.active a::before {
+    content: "";
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    width: 6px;
+    height: 6px;
+    margin-top: -3px;
+    border-radius: 50%;
+    background: #fff;
+}
+
+.page-breadcrumb {
+    margin: 0 0 12px;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    color: #6b5c60;
+}
+
+.page-breadcrumb a {
+    color: #6b5c60;
+    text-decoration: none;
+    border-bottom: none;
+}
+
+.page-breadcrumb a:hover,
+.page-breadcrumb a:focus-visible {
+    color: var(--ink-content);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+/* Shared meta accent for Research-by-Area / chronology portal cues */
+a.meta-cue-link {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: none;
+}
+
+a.meta-cue-link:hover,
+a.meta-cue-link:focus-visible {
+    color: var(--accent-hover);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+/* Home sidebar: light dividers around the off-page Research by Area portal */
+body.page-home .main-nav li.nav-divider {
+    height: 0;
+    margin: 6px 22% 6px;
+    border: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.18);
+    pointer-events: none;
+}
+
+body.page-home .main-nav li.nav-portal a {
+    height: auto;
+    min-height: 52px;
+    line-height: 1.3;
+    padding: 14px 10px;
+    box-sizing: border-box;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: -0.02em; /* #3 align with nav tracking */
+}
+
+/* #6 Home sidebar: thin left accent bar on active section (keep white fill) */
+body.page-home .main-nav li.active > a {
+    box-shadow: inset 3px 0 0 var(--accent);
+}
+
+/* #1 Stronger paper titles + #5 venue/arXiv accent hierarchy */
+.paper-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--ink-title);
+}
+
+.section.preprint .section-heading ul > li > a,
+.section.preprint .section-heading ul > li .hover-tooltip a {
+    color: var(--accent);
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.section.preprint .section-heading ul > li > a:hover,
+.section.preprint .section-heading ul > li > a:focus-visible,
+.section.preprint .section-heading ul > li .hover-tooltip a:hover,
+.section.preprint .section-heading ul > li .hover-tooltip a:focus-visible {
+    color: var(--accent-hover);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+/* Research-by-area: clear area headings + light intersection affordances */
+.section.preprint .section-heading > h2 {
+    text-align: left;
+    font-family: var(--display-font);
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    margin: 0 0 6px;
+    color: var(--ink-content);
+}
+
+.section.preprint .section-heading > .line-dec {
+    margin: 8px 0 18px;
+}
+
+/* In-section paper subgroups (not sidebar nav) */
+.section.preprint .section-heading h3.area-subgroup {
+    margin: 1.35em 0 0.55em;
+    padding: 0;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #6b5c60;
+    text-align: left;
+}
+
+.section.preprint .section-heading h3.area-subgroup:first-of-type {
+    margin-top: 0.35em;
+}
+
+/* Cross-theme connections — hairline box on label only; links sit outside */
+.area-connections {
+    display: block;
+    margin: 0 0 22px;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    line-height: 1.55;
+    color: var(--ink-content);
+    text-align: left;
+}
+
+.area-connections-label {
+    display: inline-block;
+    padding: 4px 8px;
+    box-sizing: border-box;
+    border: 1px solid rgba(42, 36, 38, 0.12);
+    background: #f5f4f5;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-size: 11px;
+    color: var(--accent);
+    margin-right: 0.65em;
+    vertical-align: baseline;
+}
+
+/* Inline anchors in connections meta (home chronology cue, etc.) */
+.area-connections a {
+    color: var(--ink-content);
+    text-decoration: none;
+    border-bottom: none;
+}
+
+.area-connections a:hover,
+.area-connections a:focus-visible {
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+/* Prefer shared meta accent when marked (Research by Area portal links) */
+.area-connections a.meta-cue-link {
+    color: var(--accent);
+}
+
+.area-connections a.meta-cue-link:hover,
+.area-connections a.meta-cue-link:focus-visible {
+    color: var(--accent-hover);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+.connection-link {
+    appearance: none;
+    -webkit-appearance: none;
+    background: none;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--ink-content);
+    cursor: pointer;
+    text-decoration: none;
+    border-bottom: none;
+    line-height: inherit;
+}
+
+.connection-link:hover,
+.connection-link:focus-visible {
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    outline: none;
+}
+
+.conn-sep {
+    margin: 0 0.4em;
+    color: #9a8a8e;
+}
+
+.related-note {
+    margin: 0.35em 0 0.15em;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    line-height: 1.45;
+    color: #6b5c60;
+}
+
+/* Award notes under a paper — compact meta line (like related-note / connections) */
+.paper-award {
+    display: block;
+    margin: 0.35em 0 0.1em;
+    padding: 0;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    line-height: 1.45;
+    color: var(--award-accent);
+}
+
+.paper-award + .paper-award {
+    margin-top: 0.15em;
+}
+
+.paper-award a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+.paper-award a:hover,
+.paper-award a:focus-visible {
+    color: var(--accent-hover);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+.related-note a.paper-jump {
+    color: var(--ink-content);
+    text-decoration: none;
+    border-bottom: none;
+}
+
+.related-note a.paper-jump:hover,
+.related-note a.paper-jump:focus-visible {
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+/* #9 Bio / group / funding content links — underline on hover only (not sidebar nav) */
+.section-heading > span a,
+.section.about-me .section-heading a,
+.section.group .section-heading a,
+.section.teaching .section-heading a,
+.section.talks .section-heading a {
+    text-decoration: none;
+}
+
+.section-heading > span a:hover,
+.section-heading > span a:focus-visible,
+.section.about-me .section-heading a:hover,
+.section.about-me .section-heading a:focus-visible,
+.section.group .section-heading a:hover,
+.section.group .section-heading a:focus-visible,
+.section.teaching .section-heading a:hover,
+.section.teaching .section-heading a:focus-visible,
+.section.talks .section-heading a:hover,
+.section.talks .section-heading a:focus-visible {
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+li.paper-highlight {
+    animation: paperPulse 2.2s ease;
+}
+
+@keyframes paperPulse {
+    0% {
+        background-color: rgba(26, 15, 18, 0.08);
+    }
+    35% {
+        background-color: rgba(26, 15, 18, 0.12);
+    }
+    100% {
+        background-color: transparent;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    li.paper-highlight {
+        animation: none;
+        background-color: rgba(26, 15, 18, 0.08);
+    }
+}
+
+/* Home (#2): clearer section hierarchy — breathing room + even list rhythm */
+body.page-home .section .section-heading > h2 {
+    margin-bottom: 6px;
+}
+
+body.page-home .section .section-heading > .line-dec {
+    margin-top: 8px;
+    margin-bottom: 22px;
+}
+
+body.page-home .section .section-heading > span {
+    margin-top: 0;
+}
+
+body.page-home .section .section-heading h1 {
+    margin-top: 1.35em;
+    margin-bottom: 0.85em;
+}
+
+body.page-home .section .section-heading ul {
+    margin-top: 0;
+}
+
+body.page-home .section .section-heading ul > li {
+    margin-bottom: 0.85em;
+}
+
+body.page-home .section .section-heading ul > li:last-child {
+    margin-bottom: 0;
+}
+
+/* Nested talk/sub-items: slightly tighter, still even */
+body.page-home .section .section-heading ul ul > li {
+    margin-bottom: 0.4em;
+}
+
+body.page-home .section .section-heading ul ul > li:last-child {
+    margin-bottom: 0;
+}
+
+/* #2 denser short lists: Group + Funding/Awards only (leave Methodological etc. airy) */
+body.page-home .section.group .section-heading > .line-dec {
+    margin-top: 6px;
+    margin-bottom: 12px;
+}
+
+body.page-home .section.group .section-heading ul > li {
+    margin-bottom: 0.35em;
+}
+
+body.page-home .section.about-me .section-heading h1 {
+    margin-top: 1.1em;
+    margin-bottom: 0.4em;
+}
+
+body.page-home .section.about-me .section-heading h1 + ul > li {
+    margin-bottom: 0.35em;
+}
+
+/* Long publication lists (home section3/4 + research.html areas): exceed #2 0.85em rhythm */
+body.page-home .section.preprint .section-heading ul > li,
+.section.preprint .section-heading ul > li {
+    margin-bottom: 1.2em;
+}
+
+body.page-home .section.preprint .section-heading ul > li:last-child,
+.section.preprint .section-heading ul > li:last-child {
+    margin-bottom: 0;
+}
 
